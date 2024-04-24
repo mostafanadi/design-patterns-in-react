@@ -9,6 +9,7 @@ import Prototype from "../components/creational/prototype";
 import Decorator from "../components/creational/decorator";
 import Singleton from "../components/creational/singleton";
 import Facade from "../components/creational/facade";
+import Flyweight from "../components/creational/flyweight/user-list";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,9 @@ export const router = createBrowserRouter([
           </Link>
           <Link className="p-3" to="facade">
             Facade
+          </Link>
+          <Link className="p-3" to="flyweight">
+            Flyweight
           </Link>
         </div>
       </div>
@@ -90,5 +94,20 @@ export const router = createBrowserRouter([
   {
     path: "facade",
     element: <Facade userId="1" />,
+  },
+  {
+    path: "flyweight",
+    element: (
+      <Flyweight
+        users={[
+          { age: 25, name: "Mostafa" },
+          { age: 25, name: "Mostafa" },
+          { age: 25, name: "Mostafa" },
+          { age: 25, name: "Mostafa" },
+          { age: 25, name: "Mostafa" },
+          { age: 21, name: "Nasir" },
+        ]}
+      />
+    ),
   },
 ]);
