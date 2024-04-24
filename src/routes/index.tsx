@@ -10,6 +10,7 @@ import Decorator from "../components/creational/decorator";
 import Singleton from "../components/creational/singleton";
 import Facade from "../components/creational/facade";
 import Flyweight from "../components/creational/flyweight/user-list";
+import Proxy from "../components/creational/proxy";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,9 @@ export const router = createBrowserRouter([
           </Link>
           <Link className="p-3" to="flyweight">
             Flyweight
+          </Link>
+          <Link className="p-3" to="proxy">
+            Proxy
           </Link>
         </div>
       </div>
@@ -109,5 +113,9 @@ export const router = createBrowserRouter([
         ]}
       />
     ),
+  },
+  {
+    path: "proxy",
+    element: <Proxy userId={1} />,
   },
 ]);
