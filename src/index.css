@@ -5,3 +5,12 @@
 body {
   padding: 20px;
 }
+.btn {
+  @apply p-3 bg-cyan-700 text-gray-50;
+  &:hover {
+    @apply bg-cyan-800;
+  }
+  &:active {
+    @apply bg-cyan-900;
+  }
+}

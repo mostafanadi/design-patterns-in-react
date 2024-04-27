@@ -1,16 +1,25 @@
 import { createBrowserRouter, Link } from "react-router-dom";
-import ThemeSwitcher from "../components/creational/abstract-factory/theme-switcher";
-import FactoryMethod from "../components/creational/factory-method";
-import Adapter from "../components/creational/adapter";
-import Builder from "../components/creational/builder";
-import Bridge from "../components/creational/bridge";
-import Composite from "../components/creational/composite";
-import Prototype from "../components/creational/prototype";
-import Decorator from "../components/creational/decorator";
-import Singleton from "../components/creational/singleton";
-import Facade from "../components/creational/facade";
-import Flyweight from "../components/creational/flyweight/user-list";
-import Proxy from "../components/creational/proxy";
+import ThemeSwitcher from "../components/design-patterns/creational/abstract-factory/theme-switcher";
+import FactoryMethod from "../components/design-patterns/creational/factory-method";
+import Adapter from "../components/design-patterns/structural/adapter";
+import Builder from "../components/design-patterns/creational/builder";
+import Bridge from "../components/design-patterns/structural/bridge";
+import Composite from "../components/design-patterns/structural/composite";
+import Prototype from "../components/design-patterns/creational/prototype";
+import Decorator from "../components/design-patterns/structural/decorator";
+import Singleton from "../components/design-patterns/creational/singleton";
+import Facade from "../components/design-patterns/structural/facade";
+import Flyweight from "../components/design-patterns/structural/flyweight/user-list";
+import Proxy from "../components/design-patterns/structural/proxy";
+import ChainOfResponsibility from "../components/design-patterns/bhavioral/chain-of-responsibility";
+import Command from "../components/design-patterns/bhavioral/command";
+import Iterator from "../components/design-patterns/bhavioral/iterator";
+import MediatorImplementation from "../components/design-patterns/bhavioral/mediator";
+import Memento from "../components/design-patterns/bhavioral/memento";
+import { Observer } from "../components/design-patterns/bhavioral/observer";
+import State from "../components/design-patterns/bhavioral/state";
+import Strategy from "../components/design-patterns/bhavioral/strategy";
+
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +63,30 @@ export const router = createBrowserRouter([
           </Link>
           <Link className="p-3" to="proxy">
             Proxy
+          </Link>
+          <Link className="p-3" to="chain-of-responsibility">
+            Chain of responsibility
+          </Link>
+          <Link className="p-3" to="command">
+            Command
+          </Link>
+          <Link className="p-3" to="iterator">
+            Iterator
+          </Link>
+          <Link className="p-3" to="mediator">
+            Mediator
+          </Link>
+          <Link className="p-3" to="memento">
+            Memento
+          </Link>
+          <Link className="p-3" to="observer">
+            Observer
+          </Link>
+          <Link className="p-3" to="state">
+            State
+          </Link>
+          <Link className="p-3" to="strategy">
+            Strategy
           </Link>
         </div>
       </div>
@@ -117,5 +150,37 @@ export const router = createBrowserRouter([
   {
     path: "proxy",
     element: <Proxy userId={1} />,
+  },
+  {
+    path: "chain-of-responsibility",
+    element: <ChainOfResponsibility />,
+  },
+  {
+    path: "command",
+    element: <Command />,
+  },
+  {
+    path: "iterator",
+    element: <Iterator />,
+  },
+  {
+    path: "mediator",
+    element: <MediatorImplementation />,
+  },
+  {
+    path: "memento",
+    element: <Memento />,
+  },
+  {
+    path: "observer",
+    element: <Observer />,
+  },
+  {
+    path: "state",
+    element: <State />,
+  },
+  {
+    path: "strategy",
+    element: <Strategy />,
   },
 ]);

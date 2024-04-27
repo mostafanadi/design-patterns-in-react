@@ -15,7 +15,7 @@ class UserDataProxy {
     if (!this.userData) {
       // Simulate fetching user data from an API
       const response = await fetch(
-        `https://api.example.com/users/${this.userId}`
+        `https://jsonplaceholder.typicode.com/users/${this.userId}`
       );
       const data = await response.json();
       this.userData = data;
