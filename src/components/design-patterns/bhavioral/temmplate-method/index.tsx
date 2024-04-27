@@ -13,18 +13,30 @@ const useChildProps = (children: JSX.Element[], whitelist: string[]) => {
       }
       childProps[child.type] = child.props;
       return childProps;
-    }, [children]);
+    });
+
+  }, [children])
+}
 
 
 
-  }, [children]);
-};
+
+
+const Title = () => {
+  return (
+    <div>THIS IS TITLE</div>
+  )
+}
 export default function TemplateMethod({ children }: Props) {
-  const d = useChildProps(children,
+  const childProps = useChildProps(children,
     ['Title',
       'Contents',
     ])
   return (
-    <div>{children}</div>
+    <div>
+      {
+        childProps.Title && <Title />
+      }
+      {children}</div>
   )
 }
