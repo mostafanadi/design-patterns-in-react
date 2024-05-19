@@ -6,7 +6,7 @@ body {
   padding: 20px;
 }
 .btn {
-  @apply p-3 bg-cyan-700 text-gray-50;
+  @apply inline-block p-3 bg-cyan-700 text-gray-50;
   &:hover {
     @apply bg-cyan-800;
   }

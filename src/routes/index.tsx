@@ -19,78 +19,24 @@ import Memento from "../components/design-patterns/bhavioral/memento";
 import { Observer } from "../components/design-patterns/bhavioral/observer";
 import State from "../components/design-patterns/bhavioral/state";
 import Strategy from "../components/design-patterns/bhavioral/strategy";
-
+import TemplateMethod_ClassBased from "../components/design-patterns/bhavioral/template-method/class-based";
+import Visitor from "../components/design-patterns/bhavioral/visitor";
+import DesignPatterns from "../components/design-patterns";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <div className="">
-        <h1 className="text-2xl p-3">Design Patterns In React</h1>
-        <div className="flex flex-col">
-          <Link className="p-3" to="abstract-factory">
-            Abstract Factory
-          </Link>
-          <Link className="p-3" to="factory-method">
-            Factory Method
-          </Link>
-          <Link className="p-3" to="adapter">
-            Adapter
-          </Link>
-          <Link className="p-3" to="builder">
-            Builder
-          </Link>
-          <Link className="p-3" to="bridge">
-            Bridge
-          </Link>
-          <Link className="p-3" to="composite">
-            Composite
-          </Link>
-          <Link className="p-3" to="prototype">
-            Prototype
-          </Link>
-          <Link className="p-3" to="decorator">
-            Decorator
-          </Link>
-          <Link className="p-3" to="singleton">
-            Singleton
-          </Link>
-          <Link className="p-3" to="facade">
-            Facade
-          </Link>
-          <Link className="p-3" to="flyweight">
-            Flyweight
-          </Link>
-          <Link className="p-3" to="proxy">
-            Proxy
-          </Link>
-          <Link className="p-3" to="chain-of-responsibility">
-            Chain of responsibility
-          </Link>
-          <Link className="p-3" to="command">
-            Command
-          </Link>
-          <Link className="p-3" to="iterator">
-            Iterator
-          </Link>
-          <Link className="p-3" to="mediator">
-            Mediator
-          </Link>
-          <Link className="p-3" to="memento">
-            Memento
-          </Link>
-          <Link className="p-3" to="observer">
-            Observer
-          </Link>
-          <Link className="p-3" to="state">
-            State
-          </Link>
-          <Link className="p-3" to="strategy">
-            Strategy
-          </Link>
-        </div>
+      <div>
+        <Link className="btn !bg-purple-800" to={"/design-patterns"}>
+          Design Patterns
+        </Link>
       </div>
     ),
+  },
+  {
+    path: "/design-patterns",
+    element: <DesignPatterns />,
   },
   {
     path: "abstract-factory",
@@ -182,5 +128,13 @@ export const router = createBrowserRouter([
   {
     path: "strategy",
     element: <Strategy />,
+  },
+  {
+    path: "template-method",
+    element: <TemplateMethod_ClassBased />,
+  },
+  {
+    path: "visitor",
+    element: <Visitor />,
   },
 ]);
