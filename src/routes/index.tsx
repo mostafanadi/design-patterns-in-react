@@ -27,9 +27,12 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <div>
-        <Link className="btn !bg-purple-800" to={"/design-patterns"}>
+      <div className="flex flex-col gap-3">
+        <Link className="btn !bg-purple-800 w-fit" to={"/design-patterns"}>
           Design Patterns
+        </Link>
+        <Link className="btn !bg-cyan-600 w-fit" to={"/design-patterns"}>
+          Data Structures
         </Link>
       </div>
     ),
