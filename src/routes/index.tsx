@@ -42,47 +42,47 @@ export const router = createBrowserRouter([
     element: <DesignPatterns />,
   },
   {
-    path: "abstract-factory",
+    path: "design-patterns/design-patterns/abstract-factory",
     element: <ThemeSwitcher />,
   },
   {
-    path: "factory-method",
+    path: "design-patterns/factory-method",
     element: <FactoryMethod />,
   },
   {
-    path: "adapter",
+    path: "design-patterns/adapter",
     element: <Adapter />,
   },
   {
-    path: "builder",
+    path: "design-patterns/builder",
     element: <Builder />,
   },
   {
-    path: "bridge",
+    path: "design-patterns/bridge",
     element: <Bridge />,
   },
   {
-    path: "composite",
+    path: "design-patterns/composite",
     element: <Composite />,
   },
   {
-    path: "prototype",
+    path: "design-patterns/prototype",
     element: <Prototype />,
   },
   {
-    path: "decorator",
+    path: "design-patterns/decorator",
     element: <Decorator />,
   },
   {
-    path: "singleton",
+    path: "design-patterns/singleton",
     element: <Singleton />,
   },
   {
-    path: "facade",
+    path: "design-patterns/facade",
     element: <Facade userId="1" />,
   },
   {
-    path: "flyweight",
+    path: "design-patterns/flyweight",
     element: (
       <Flyweight
         users={[
@@ -97,47 +97,47 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: "proxy",
+    path: "design-patterns/proxy",
     element: <Proxy userId={1} />,
   },
   {
-    path: "chain-of-responsibility",
+    path: "design-patterns/chain-of-responsibility",
     element: <ChainOfResponsibility />,
   },
   {
-    path: "command",
+    path: "design-patterns/command",
     element: <Command />,
   },
   {
-    path: "iterator",
+    path: "design-patterns/iterator",
     element: <Iterator />,
   },
   {
-    path: "mediator",
+    path: "design-patterns/mediator",
     element: <MediatorImplementation />,
   },
   {
-    path: "memento",
+    path: "design-patterns/memento",
     element: <Memento />,
   },
   {
-    path: "observer",
+    path: "design-patterns/observer",
     element: <Observer />,
   },
   {
-    path: "state",
+    path: "design-patterns/state",
     element: <State />,
   },
   {
-    path: "strategy",
+    path: "design-patterns/strategy",
     element: <Strategy />,
   },
   {
-    path: "template-method",
+    path: "design-patterns/template-method",
     element: <TemplateMethod_ClassBased />,
   },
   {
-    path: "visitor",
+    path: "design-patterns/visitor",
     element: <Visitor />,
   },
 ]);
