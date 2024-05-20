@@ -66,7 +66,7 @@ const Builder: React.FC = () => {
   // Create a new button using the builder pattern
   const button = new ButtonBuilder()
     .withText("Submit")
-    .withColor("green")
+    .withColor("black")
     .withOnClick(() => alert("Button clicked!"))
     .withDisabled(false)
     .build();

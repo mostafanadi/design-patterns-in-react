@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
     element: <DesignPatterns />,
   },
   {
-    path: "design-patterns/design-patterns/abstract-factory",
+    path: "design-patterns/abstract-factory",
     element: <ThemeSwitcher />,
   },
   {
