@@ -22,6 +22,10 @@ import Strategy from "../components/design-patterns/bhavioral/strategy";
 import TemplateMethod_ClassBased from "../components/design-patterns/bhavioral/template-method/class-based";
 import Visitor from "../components/design-patterns/bhavioral/visitor";
 import DesignPatterns from "../components/design-patterns";
+import DataStrictures from "../components/data-structures";
+import LinkedList from "../components/data-structures/linked-list";
+import Stack from "../components/data-structures/stack";
+import QueueComponent from "../components/data-structures/queue";
 
 export const router = createBrowserRouter([
   {
@@ -31,7 +35,7 @@ export const router = createBrowserRouter([
         <Link className="btn !bg-purple-800 w-fit" to={"/design-patterns"}>
           Design Patterns
         </Link>
-        <Link className="btn !bg-cyan-600 w-fit" to={"/design-patterns"}>
+        <Link className="btn !bg-cyan-600 w-fit" to={"/data-structures"}>
           Data Structures
         </Link>
       </div>
@@ -139,5 +143,21 @@ export const router = createBrowserRouter([
   {
     path: "design-patterns/visitor",
     element: <Visitor />,
+  },
+  {
+    path: "data-structures",
+    element: <DataStrictures />,
+  },
+  {
+    path: "data-structures/linked-list",
+    element: <LinkedList />,
+  },
+  {
+    path: "data-structures/stack",
+    element: <Stack />,
+  },
+  {
+    path: "data-structures/queue",
+    element: <QueueComponent />,
   },
 ]);
