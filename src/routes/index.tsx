@@ -26,6 +26,7 @@ import DataStrictures from "../components/data-structures";
 import LinkedList from "../components/data-structures/linked-list";
 import Stack from "../components/data-structures/stack";
 import QueueComponent from "../components/data-structures/queue";
+import TreeComponent from "../components/data-structures";
 
 export const router = createBrowserRouter([
   {
@@ -159,5 +160,9 @@ export const router = createBrowserRouter([
   {
     path: "data-structures/queue",
     element: <QueueComponent />,
+  },
+  {
+    path: "data-structures/tree",
+    element: <TreeComponent />,
   },
 ]);
