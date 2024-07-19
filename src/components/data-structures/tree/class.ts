@@ -30,6 +30,37 @@ export class TreeNode {
     }
     // console.log(segments.slice(1).join('/'))
   }
+
+  findNodeDepth(path: string): TreeNode | null {
+
+    if (this.data == path) {
+      return this!
+    }
+    for (let child of this.children) {
+      if (child.data == path) {
+        return child!
+      } else {
+        return child!.findNodeDepth(path) || null;
+      }
+    }
+    return null
+  }
+  findNodeBreadth(path: string): TreeNode | null {
+
+    if (this.data == path) {
+      return this
+    }
+    for (let child of this.children) {
+      if (child.data == path) {
+        return child
+      }
+    }
+    for (let child of this.children) {
+
+      return child.findNodeBreadth(path)
+    }
+    return null
+  }
   removeNode(path: string) {
     const segments = path.split("/");
     if (segments.length == 0) {
@@ -69,6 +100,12 @@ export class Tree {
   }
   remove(path: string) {
     this.root?.removeNode(path);
+  }
+  findDepth(path: string) {
+    return this.root?.findNodeDepth(path)
+  }
+  findBreadth(path: string) {
+    return this.root?.findNodeBreadth(path)
   }
 }
 const p = new Tree("/");

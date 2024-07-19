@@ -22,11 +22,12 @@ import Strategy from "../components/design-patterns/bhavioral/strategy";
 import TemplateMethod_ClassBased from "../components/design-patterns/bhavioral/template-method/class-based";
 import Visitor from "../components/design-patterns/bhavioral/visitor";
 import DesignPatterns from "../components/design-patterns";
-import DataStrictures from "../components/data-structures";
+import DataStrictures from "../components/data-structures/tree";
 import LinkedList from "../components/data-structures/linked-list";
 import Stack from "../components/data-structures/stack";
 import QueueComponent from "../components/data-structures/queue";
-import TreeComponent from "../components/data-structures";
+import TreeComponent from "../components/data-structures/tree";
+import BinarySearchTreeComponent from "../components/data-structures/binary-search-tree";
 
 export const router = createBrowserRouter([
   {
@@ -164,5 +165,9 @@ export const router = createBrowserRouter([
   {
     path: "data-structures/tree",
     element: <TreeComponent />,
+  },
+  {
+    path: "data-structures/b-tree",
+    element: <BinarySearchTreeComponent />,
   },
 ]);
