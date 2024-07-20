@@ -28,6 +28,7 @@ import Stack from "../components/data-structures/stack";
 import QueueComponent from "../components/data-structures/queue";
 import TreeComponent from "../components/data-structures/tree";
 import BinarySearchTreeComponent from "../components/data-structures/binary-search-tree";
+import AVLTreeComponent from "../components/data-structures/avl-tree";
 
 export const router = createBrowserRouter([
   {
@@ -169,5 +170,9 @@ export const router = createBrowserRouter([
   {
     path: "data-structures/b-tree",
     element: <BinarySearchTreeComponent />,
+  },
+  {
+    path: "data-structures/avl-tree",
+    element: <AVLTreeComponent />,
   },
 ]);

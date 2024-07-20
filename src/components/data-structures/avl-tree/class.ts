@@ -1,23 +1,38 @@
-export class BinaryTreeNode {
-  parent: BinaryTreeNode | null = null;
-  left: BinaryTreeNode | null = null;
-  right: BinaryTreeNode | null = null;
+export class AVLTreeNode {
+  parent: AVLTreeNode | null = null;
+  left: AVLTreeNode | null = null;
+  right: AVLTreeNode | null = null;
   value: number | null = null;
-  constructor(value: any, parent: BinaryTreeNode | null = null) {
+  constructor(value: any, parent: AVLTreeNode | null = null) {
     this.value = value;
     this.parent = parent;
+  }
+  get leftDepth(): number {
+    if (!this.left) {
+      return 0;
+    }
+    return this.left.depth + 1;
+  }
+  get rightDepth(): number {
+    if (!this.right) {
+      return 0;
+    }
+    return this.right.depth + 1;
+  }
+  get depth() {
+    return Math.max(this.leftDepth, this.rightDepth);
   }
   addNode(value: number) {
     if (value > this.value!) {
       if (!this.right) {
-        this.right = new BinaryTreeNode(value);
+        this.right = new AVLTreeNode(value);
         this.right.parent = this;
       } else {
         this.right.addNode(value);
       }
     } else {
       if (!this.left) {
-        this.left = new BinaryTreeNode(value);
+        this.left = new AVLTreeNode(value);
         this.left.parent = this;
       } else {
         this.left!.addNode(value);
@@ -25,7 +40,7 @@ export class BinaryTreeNode {
     }
   }
 
-  findNode(value: number): BinaryTreeNode | undefined {
+  findNode(value: number): AVLTreeNode | undefined {
     if (value == this.value && !!this) {
       // console.log(this)
       return this;
@@ -37,7 +52,7 @@ export class BinaryTreeNode {
       return this.left?.findNode(value);
     }
   }
-  removeChild(node: BinaryTreeNode) {
+  removeChild(node: AVLTreeNode) {
     if (this?.right?.value == node.value) {
       this.right = null;
       return;
@@ -94,10 +109,10 @@ export class BinaryTreeNode {
     }
   }
 }
-export class BinarySearchTree {
-  root?: BinaryTreeNode;
+export class AVLTree {
+  root?: AVLTreeNode;
   constructor(value: number) {
-    const root = new BinaryTreeNode(value, null);
+    const root = new AVLTreeNode(value, null);
     this.root = root;
   }
   add(value: number) {
