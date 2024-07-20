@@ -22,6 +22,7 @@ export class AVLTreeNode {
   get depth() {
     return Math.max(this.leftDepth, this.rightDepth);
   }
+
   addNode(value: number) {
     if (value > this.value!) {
       if (!this.right) {
