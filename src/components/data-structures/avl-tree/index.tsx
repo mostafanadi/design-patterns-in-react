@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { renderToString } from "react-dom/server";
-import { BinarySearchTree, BinaryTreeNode } from "./class";
+import { AVLTree, AVLTreeNode } from "./class";
 
 type Props = {};
 
-export default function BinarySearchTreeComponent({}: Props) {
+export default function AVLTreeComponent({}: Props) {
   useEffect(() => {
-    const p = new BinarySearchTree(10);
+    const p = new AVLTree(10);
     p.add(5);
     p.add(2);
     p.add(6);
@@ -28,10 +28,10 @@ export default function BinarySearchTreeComponent({}: Props) {
   return (
     <>
       <SyntaxHighlighter language="javascript" style={a11yDark}>
-        {renderToString(BinarySearchTree.toString())}
+        {renderToString(AVLTree.toString())}
       </SyntaxHighlighter>
       <SyntaxHighlighter language="javascript" style={a11yDark}>
-        {renderToString(BinaryTreeNode.toString())}
+        {renderToString(AVLTreeNode.toString())}
       </SyntaxHighlighter>
     </>
   );
