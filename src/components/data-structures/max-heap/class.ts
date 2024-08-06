@@ -25,7 +25,6 @@ class MaxHeap {
     }
     const topElement = this.heapElements[0];
     this.heapElements[0] = this.heapElements.pop()!;
-    console.log(this.heapElements);
     let currentElementIndex = 0;
     let leftChildIndex = 2 * currentElementIndex + 1;
     let rightChildIndex = 2 * currentElementIndex + 2;
@@ -34,21 +33,15 @@ class MaxHeap {
       this.heapElements[rightChildIndex] >= this.heapElements[leftChildIndex]
         ? rightChildIndex
         : leftChildIndex;
-    console.log(childElementIndex);
     while (
-      // this.heapElements[childElementIndex] &&
-      this.heapElements[currentElementIndex] <
-      this.heapElements[childElementIndex]
+      this.heapElements[childElementIndex] &&
+      this.heapElements[currentElementIndex] <=
+        this.heapElements[childElementIndex]
     ) {
       let currentNode = this.heapElements[currentElementIndex];
       let childNode = this.heapElements[childElementIndex];
       this.heapElements[currentElementIndex] = childNode;
       this.heapElements[childElementIndex] = currentNode;
-      childElementIndex =
-        this.heapElements[rightChildIndex] &&
-        this.heapElements[leftChildIndex] <= this.heapElements[rightChildIndex]
-          ? rightChildIndex
-          : leftChildIndex;
     }
 
     return topElement;
