@@ -22,8 +22,11 @@ export class AVLTreeNode {
   get depth() {
     return Math.max(this.leftDepth, this.rightDepth);
   }
+  get balanceFactor() {
+    return this.leftDepth - this.rightDepth
+  }
 
-  addNode(value: number) {
+  addNode(value: number) { 
     if (value > this.value!) {
       if (!this.right) {
         this.right = new AVLTreeNode(value);
@@ -116,11 +119,100 @@ export class AVLTree {
     const root = new AVLTreeNode(value, null);
     this.root = root;
   }
+  balance(node: AVLTreeNode) {
+    if (node.balanceFactor < -1) {
+      if (node.right?.balanceFactor! < 0) {
+        this.rotateLeft(node)
+      } else {
+        this.rotateRightLeft(node)
+      }
+    } else if (node.balanceFactor > 1) {
+      if (node.left?.balanceFactor! > 0) {
+        this.rotateRight(node)
+      } else {
+        this.rotateLeftRight(node)
+      }
+    }
+  }
+  rotateLeft(node: AVLTreeNode) {
+    const rightNode = node.right!
+    node.right = null;
+    if (node.parent) {
+      node.parent.right = rightNode;
+      node.parent.right.parent = node.parent
+    }
+    if (node == this.root) {
+      this.root = rightNode;
+      this.root.parent = null;
+    }
+    if (rightNode.left) {
+      node.right = rightNode.left;
+      node.right.parent = node;
+    }
+    rightNode.left = node;
+    rightNode.left.parent = rightNode;
+
+  }
+  rotateRightLeft(node: AVLTreeNode) {
+    const rightNode = node.right!;
+    node.right = null;
+    const rightLeftNode = rightNode.left!
+    rightLeftNode.left = null;
+    if (rightLeftNode.right) {
+      rightNode!.left = rightLeftNode.right;
+      rightNode!.left!.parent = rightNode;
+      rightLeftNode.right = null;
+    }
+    node.right = rightLeftNode;
+    node.right!.parent = node;
+    rightLeftNode!.right = rightNode;
+    rightLeftNode!.right!.parent! = rightLeftNode as AVLTreeNode;
+  }
+  rotateRight(node: AVLTreeNode) {
+    const leftNode = node.left!;
+    node.left = null;
+    if (node.parent) {
+      node.parent.left = leftNode;
+      node.parent.left.parent = node.parent;
+    }
+    if (node == this.root) {
+      this.root = leftNode;
+      this.root.parent = null;
+    }
+    if (leftNode.right) {
+      node.left = leftNode.right;
+      node.left.parent = node;
+
+    }
+    leftNode.right = node;
+    leftNode.right.parent = leftNode;
+  }
+  rotateLeftRight(node: AVLTreeNode) {
+    const leftNode = node.left;
+    node.left = null;
+    const leftRightNode = leftNode!.right;
+    leftNode!.right = null;
+    if (leftRightNode?.left) {
+      leftNode!.right = leftRightNode.left;
+      leftNode!.right.parent = leftNode;
+      leftRightNode.left = null;
+    }
+    node.left = leftRightNode;
+    node.left!.parent = node;
+    leftRightNode!.left = leftNode;
+    leftRightNode!.left!.parent! = leftRightNode as AVLTreeNode;
+  }
   add(value: number) {
     this.root?.addNode(value);
+    let currentNode = this.root?.findNode(value);
+    while (currentNode) {
+      this.balance(currentNode!);
+      currentNode = currentNode.parent!;
+    }
   }
   remove(value: number) {
     this.root?.removeNode(value);
+    this.balance(this.root!)
   }
   find(value: number) {
     return this.root?.findNode(value);

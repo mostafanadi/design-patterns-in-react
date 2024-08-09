@@ -1,26 +1,18 @@
-import { useEffect } from "react";
-import { Tree, TreeNode } from "./tree/class";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { renderToString } from "react-dom/server";
+
+import { Link } from "react-router-dom";
 
 type Props = {};
 
-export default function TreeComponent({}: Props) {
-  useEffect(() => {
-    const p = new Tree("/");
-    p.add("games/call-off-dute/bin.exe");
-    p.remove("games");
-    console.log(p);
-  }, []);
+export default function DataStructures({ }: Props) {
+
   return (
-    <>
-      <SyntaxHighlighter language="javascript" style={a11yDark}>
-        {renderToString(Tree.toString())}
-      </SyntaxHighlighter>
-      <SyntaxHighlighter language="javascript" style={a11yDark}>
-        {renderToString(TreeNode.toString())}
-      </SyntaxHighlighter>
-    </>
+    <div className="space-y-4 [&_a]:block [&_a]:max-w-60  [&_a]:py-2 [&_a]:px-4 [&_a]:bg-sky-700 [&_a]:text-white">
+      <Link to="tree">
+        Tree
+      </Link>
+      <Link to="heap">
+        Heap
+      </Link>
+    </div>
   );
 }

@@ -29,6 +29,8 @@ import QueueComponent from "../components/data-structures/queue";
 import TreeComponent from "../components/data-structures/tree";
 import BinarySearchTreeComponent from "../components/data-structures/binary-search-tree";
 import AVLTreeComponent from "../components/data-structures/avl-tree";
+import DataStructures from "../components/data-structures";
+import HeapComponent from "../components/data-structures/heap";
 
 export const router = createBrowserRouter([
   {
@@ -46,133 +48,151 @@ export const router = createBrowserRouter([
   },
   {
     path: "/design-patterns",
-    element: <DesignPatterns />,
+
+    children: [
+      {
+        index: true,
+        element: <DesignPatterns />,
+      },
+      {
+        path: "abstract-factory",
+        element: <ThemeSwitcher />,
+      },
+      {
+        path: "factory-method",
+        element: <FactoryMethod />,
+      },
+      {
+        path: "adapter",
+        element: <Adapter />,
+      },
+      {
+        path: "builder",
+        element: <Builder />,
+      },
+      {
+        path: "bridge",
+        element: <Bridge />,
+      },
+      {
+        path: "composite",
+        element: <Composite />,
+      },
+      {
+        path: "prototype",
+        element: <Prototype />,
+      },
+      {
+        path: "decorator",
+        element: <Decorator />,
+      },
+      {
+        path: "singleton",
+        element: <Singleton />,
+      },
+      {
+        path: "facade",
+        element: <Facade userId="1" />,
+      },
+      {
+        path: "flyweight",
+        element: (
+          <Flyweight
+            users={[
+              { age: 25, name: "Mostafa" },
+              { age: 25, name: "Mostafa" },
+              { age: 25, name: "Mostafa" },
+              { age: 25, name: "Mostafa" },
+              { age: 25, name: "Mostafa" },
+              { age: 21, name: "Nasir" },
+            ]}
+          />
+        ),
+      },
+      {
+        path: "proxy",
+        element: <Proxy userId={1} />,
+      },
+      {
+        path: "chain-of-responsibility",
+        element: <ChainOfResponsibility />,
+      },
+      {
+        path: "command",
+        element: <Command />,
+      },
+      {
+        path: "iterator",
+        element: <Iterator />,
+      },
+      {
+        path: "mediator",
+        element: <MediatorImplementation />,
+      },
+      {
+        path: "memento",
+        element: <Memento />,
+      },
+      {
+        path: "observer",
+        element: <Observer />,
+      },
+      {
+        path: "state",
+        element: <State />,
+      },
+      {
+        path: "strategy",
+        element: <Strategy />,
+      },
+      {
+        path: "template-method",
+        element: <TemplateMethod_ClassBased />,
+      },
+      {
+        path: "visitor",
+        element: <Visitor />,
+      },
+    ]
+
+
   },
-  {
-    path: "design-patterns/abstract-factory",
-    element: <ThemeSwitcher />,
-  },
-  {
-    path: "design-patterns/factory-method",
-    element: <FactoryMethod />,
-  },
-  {
-    path: "design-patterns/adapter",
-    element: <Adapter />,
-  },
-  {
-    path: "design-patterns/builder",
-    element: <Builder />,
-  },
-  {
-    path: "design-patterns/bridge",
-    element: <Bridge />,
-  },
-  {
-    path: "design-patterns/composite",
-    element: <Composite />,
-  },
-  {
-    path: "design-patterns/prototype",
-    element: <Prototype />,
-  },
-  {
-    path: "design-patterns/decorator",
-    element: <Decorator />,
-  },
-  {
-    path: "design-patterns/singleton",
-    element: <Singleton />,
-  },
-  {
-    path: "design-patterns/facade",
-    element: <Facade userId="1" />,
-  },
-  {
-    path: "design-patterns/flyweight",
-    element: (
-      <Flyweight
-        users={[
-          { age: 25, name: "Mostafa" },
-          { age: 25, name: "Mostafa" },
-          { age: 25, name: "Mostafa" },
-          { age: 25, name: "Mostafa" },
-          { age: 25, name: "Mostafa" },
-          { age: 21, name: "Nasir" },
-        ]}
-      />
-    ),
-  },
-  {
-    path: "design-patterns/proxy",
-    element: <Proxy userId={1} />,
-  },
-  {
-    path: "design-patterns/chain-of-responsibility",
-    element: <ChainOfResponsibility />,
-  },
-  {
-    path: "design-patterns/command",
-    element: <Command />,
-  },
-  {
-    path: "design-patterns/iterator",
-    element: <Iterator />,
-  },
-  {
-    path: "design-patterns/mediator",
-    element: <MediatorImplementation />,
-  },
-  {
-    path: "design-patterns/memento",
-    element: <Memento />,
-  },
-  {
-    path: "design-patterns/observer",
-    element: <Observer />,
-  },
-  {
-    path: "design-patterns/state",
-    element: <State />,
-  },
-  {
-    path: "design-patterns/strategy",
-    element: <Strategy />,
-  },
-  {
-    path: "design-patterns/template-method",
-    element: <TemplateMethod_ClassBased />,
-  },
-  {
-    path: "design-patterns/visitor",
-    element: <Visitor />,
-  },
+
   {
     path: "data-structures",
-    element: <DataStrictures />,
+    children: [{
+      index: true,
+      element: <DataStructures />,
+    },
+      {
+        path: "linked-list",
+        element: <LinkedList />,
+      },
+      {
+        path: "stack",
+        element: <Stack />,
+      },
+      {
+        path: "queue",
+        element: <QueueComponent />,
+      },
+      {
+        path: "tree",
+        element: <TreeComponent />,
+      },
+      {
+        path: "b-tree",
+        element: <BinarySearchTreeComponent />,
+      },
+      {
+        path: "avl-tree",
+        element: <AVLTreeComponent />,
+      },
+      {
+        path: "heap",
+        element: <HeapComponent />,
+      },
+    ]
   },
-  {
-    path: "data-structures/linked-list",
-    element: <LinkedList />,
-  },
-  {
-    path: "data-structures/stack",
-    element: <Stack />,
-  },
-  {
-    path: "data-structures/queue",
-    element: <QueueComponent />,
-  },
-  {
-    path: "data-structures/tree",
-    element: <TreeComponent />,
-  },
-  {
-    path: "data-structures/b-tree",
-    element: <BinarySearchTreeComponent />,
-  },
-  {
-    path: "data-structures/avl-tree",
-    element: <AVLTreeComponent />,
-  },
+
 ]);

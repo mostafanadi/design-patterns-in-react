@@ -1,5 +1,5 @@
-export class MaxHeap {
-    constructor(public heap: number[] = []) { }
+export class PriorityQueueMaxHeap {
+    constructor(public heap: { value: any; priority: number }[] = []) { }
 
     // Helper Methods
     getLeftChildIndex(parentIndex: number) { return 2 * parentIndex + 1; }
@@ -60,14 +60,14 @@ export class MaxHeap {
         return item;
     }
 
-    add(item: number) {
+    add(item: { value: any; priority: number }) {
         this.heap.push(item);
         this.heapifyUp();
     }
 
     heapifyUp() {
         let index = this.heap.length - 1;
-        while (this.hasParent(index) && this.parent(index) < this.heap[index]) {
+        while (this.hasParent(index) && this.parent(index).priority < this.heap[index].priority) {
             this.swap(this.getParentIndex(index), index);
             index = this.getParentIndex(index);
         }
@@ -77,7 +77,7 @@ export class MaxHeap {
         let index = 0;
         while (this.hasLeftChild(index)) {
             let largerChildIndex = this.getLeftChildIndex(index);
-            if (this.hasRightChild(index) && this.rightChild(index) > this.leftChild(index)) {
+            if (this.hasRightChild(index) && this.rightChild(index).priority > this.leftChild(index).priority) {
                 largerChildIndex = this.getRightChildIndex(index);
             }
             if (this.heap[index] > this.heap[largerChildIndex]) {
@@ -90,23 +90,23 @@ export class MaxHeap {
     }
 
     printHeap() {
-        var heap = ` ${this.heap[0]} `
+        var heap = ` ${this.heap[0].value} `
         for (var i = 1; i < this.heap.length; i++) {
-            heap += ` ${this.heap[i]} `;
+            heap += ` ${this.heap[i].value} `;
         }
-        console.log(heap);
+        console.log((heap));
     }
 }
 
 // Creating the Heap
-const myHeap = new MaxHeap();
-myHeap.add(4);
-myHeap.add(10);
-myHeap.add(16);
-myHeap.add(78);
-myHeap.add(561);
-myHeap.add(45);
-myHeap.add(250);
+const myHeap = new PriorityQueueMaxHeap();
+myHeap.add({ value: 4, priority: 100 });
+myHeap.add({ value: 10, priority: 2 });
+myHeap.add({ value: 16, priority: 21 });
+myHeap.add({ value: 78, priority: 40 });
+myHeap.add({ value: 561, priority: 0 });
+myHeap.add({ value: 45, priority: 35 });
+myHeap.add({ value: 250, priority: 1 });
 myHeap.remove()
 myHeap.remove()
 

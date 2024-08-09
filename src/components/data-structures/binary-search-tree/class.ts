@@ -7,6 +7,24 @@ export class BinaryTreeNode {
     this.value = value;
     this.parent = parent;
   }
+  get leftDepth(): number {
+    if (!this.left) {
+      return 0;
+    }
+    return this.left.depth + 1;
+  }
+  get rightDepth(): number {
+    if (!this.right) {
+      return 0;
+    }
+    return this.right.depth + 1;
+  }
+  get depth() {
+    return Math.max(this.leftDepth, this.rightDepth);
+  }
+  get balanceFactor() {
+    return this.leftDepth - this.rightDepth
+  }
   addNode(value: number) {
     if (value > this.value!) {
       if (!this.right) {

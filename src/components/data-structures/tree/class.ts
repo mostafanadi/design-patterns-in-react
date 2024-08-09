@@ -95,6 +95,7 @@ export class Tree {
     const root = new TreeNode(rootPath, null);
     this.root = root;
   }
+
   add(path: string) {
     this.root?.addNode(path);
   }

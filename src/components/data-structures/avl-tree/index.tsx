@@ -8,16 +8,14 @@ type Props = {};
 
 export default function AVLTreeComponent({}: Props) {
   useEffect(() => {
-    const p = new AVLTree(10);
-    p.add(5);
+    const p = new AVLTree(1);
     p.add(2);
+    p.add(3);
+    p.add(4);
+    p.add(5);
     p.add(6);
-    p.add(20);
-    p.add(25);
-    p.add(23);
-    p.add(28);
-    p.add(26);
-    p.add(39);
+
+
 
     // const w = p.find(965)
     // p.find(965)
