@@ -30,7 +30,6 @@ import TreeComponent from "../components/data-structures/tree";
 import BinarySearchTreeComponent from "../components/data-structures/binary-search-tree";
 import AVLTreeComponent from "../components/data-structures/avl-tree";
 import DataStructures from "../components/data-structures";
-import HeapComponent from "../components/data-structures/heap";
 
 export const router = createBrowserRouter([
   {
@@ -153,17 +152,16 @@ export const router = createBrowserRouter([
         path: "visitor",
         element: <Visitor />,
       },
-    ]
-
-
+    ],
   },
 
   {
     path: "data-structures",
-    children: [{
-      index: true,
-      element: <DataStructures />,
-    },
+    children: [
+      {
+        index: true,
+        element: <DataStructures />,
+      },
       {
         path: "linked-list",
         element: <LinkedList />,
@@ -188,11 +186,6 @@ export const router = createBrowserRouter([
         path: "avl-tree",
         element: <AVLTreeComponent />,
       },
-      {
-        path: "heap",
-        element: <HeapComponent />,
-      },
-    ]
+    ],
   },
-
 ]);
