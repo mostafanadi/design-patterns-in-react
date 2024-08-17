@@ -4,8 +4,8 @@ const trie = new Trie();
 
 // insert all of the article titles into the trie
 const articleTitles = [
-  "JavaScript Basics",
-  "Advanced JavaScript Techniques",
+  "javaScript Basics",
+  "Advanced javaScript Techniques",
   "Introduction to React",
   "Getting Started with Node.js",
 ];
