@@ -1,4 +1,4 @@
-class TrieNode {
+export class TrieNode {
   constructor(
     public children: { [key: string]: TrieNode } = {},
     public isEndOfWord: boolean = false
@@ -6,7 +6,7 @@ class TrieNode {
 }
 
 export class Trie {
-  constructor(private root: TrieNode = new TrieNode()) {}
+  constructor(public root: TrieNode = new TrieNode()) {}
 
   insert(word: string) {
     let node = this.root;
