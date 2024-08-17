@@ -1,29 +1,53 @@
 class TrieNode {
-  value: string | null = null;
-  children: TrieNode[] | null = null;
-  constructor(value: string | null) {
-    this.value = value;
-    this.children = Array(26)
-  }
-
+  constructor(
+    public children: { [key: string]: TrieNode } = {},
+    public isEndOfWord: boolean = false
+  ) {}
 }
-class Trie {
-  root: TrieNode;
-  constructor() {
-    this.root = new TrieNode(null);
-  }
-  insert(key: string, value: string) {
-    let node = this.root
-    for (let i = 0; i < key.length; i++) {
-      const alphabetIndex = key[i].charCodeAt(0) - 97
-      if (!node.children![alphabetIndex]) {
-        const newNode = new TrieNode(null);
-        node.children![alphabetIndex] = newNode;
+
+export class Trie {
+  constructor(private root: TrieNode = new TrieNode()) {}
+
+  insert(word: string) {
+    let node = this.root;
+    for (let i = 0; i < word.length; i++) {
+      let char = word[i];
+      if (!node.children[char]) {
+        node.children[char] = new TrieNode();
       }
-      node = node.children![alphabetIndex];
-      node.value = value;
+      node = node.children[char];
     }
+    node.isEndOfWord = true;
   }
 
+  search(word: string) {
+    let node = this.root;
 
+    for (let i = 0; i < word.length; i++) {
+      let char = word[i];
+
+      if (!node.children[char]) {
+        return false;
+      }
+      node = node.children[char];
+    }
+    return node.isEndOfWord;
+  }
+
+  startsWith(prefix: string) {
+    let node = this.root;
+    for (let i = 0; i < prefix.length; i++) {
+      let char = prefix[i];
+      if (!node.children[char]) {
+        return false;
+      }
+      node = node.children[char];
+    }
+    return true;
+  }
 }
+
+const trie = new Trie();
+trie.insert("Mostafa");
+console.log(trie.search("mostafa"));
+// Optional export
