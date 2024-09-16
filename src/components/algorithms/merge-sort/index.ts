@@ -1,4 +1,4 @@
-const mergeSort = (arr: number[]): number[] => {
+const mergeSort = (arr: (number | string)[]): (number | string)[] => {
   let copiedArray = [...arr];
   const middleIndex = Math.floor(copiedArray.length / 2);
   if (copiedArray.length == 1) {
@@ -9,12 +9,11 @@ const mergeSort = (arr: number[]): number[] => {
       ? [copiedArray[1], copiedArray[0]]
       : copiedArray;
   }
-
   const firstHalf = mergeSort(copiedArray.slice(0, middleIndex));
   const secondHalf = mergeSort(copiedArray.slice(middleIndex));
   let firsthalfIndex = 0;
   let secondHalfIndex = 0;
-  const finalArray: number[] = [];
+  const finalArray: (number | string)[] = [];
 
   while (
     firsthalfIndex < firstHalf.length ||
@@ -35,4 +34,13 @@ const mergeSort = (arr: number[]): number[] => {
 };
 
 const wdqsd = mergeSort([54, 69, 85, 125, 457, 985, 356, 10, 2]);
+// const wdqsd = mergeSort([
+//   'nastaran'
+//   ,
+//   'shayan'
+//   ,
+//   'ahmad'
+//   ,
+//   'niloofar'
+//   ]);
 console.log(wdqsd);

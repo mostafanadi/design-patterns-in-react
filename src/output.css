@@ -1,3 +1,59 @@
+
+
+@import "bootstrap.css" layer(bootstrap);
+
+@layer change, bootstrap;
+
+@layer change {
+  .btn.primary {
+    background-color: cyan;
+  }
+}
+
+
+
+
+@layer  module,state;
+
+@layer state {
+  .alert {
+    background-color: brown;
+  }
+}
+
+@layer module {
+  .alert {
+    border: medium solid violet;
+    background-color: yellow;
+    color: white;
+  }
+}
+
+
+
+.alert {
+  border: medium solid violet;
+  background-color: yellow;
+  color: white;
+}
+
+.alert {
+  background-color: blue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 ! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
 */
@@ -54,6 +110,13 @@ html,
   /* 6 */
   -webkit-tap-highlight-color: transparent;
   /* 7 */
+}
+
+.alert {
+  background-color: red;
+}
+.alert {
+  background-color: blue;
 }
 
 /*
