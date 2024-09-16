@@ -1,18 +1,30 @@
-export const fib = (n: number, memo: { [key: number]: number }): number => {
-  let result
-  if (memo[n]) {
-    return memo[n]
-  }
-  if (n == 0 || n == 1) {
-    result = 1
-  } else {
-    result = fib(n - 1, memo) + fib(n - 2, memo)
-  }
-  memo[n] = result;
-  return result
+function memoize<T extends (...args: any[]) => any>(fn: T): T {
+  const cache = new Map<string, ReturnType<T>>();
+
+  return function (
+    this: ThisParameterType<T>,
+    ...args: Parameters<T>
+  ): ReturnType<T> {
+    const key = JSON.stringify(args);
+
+    if (cache.has(key)) {
+      return cache.get(key) as ReturnType<T>;
+    }
+
+    const result = fn.apply(this, args); // Explicitly using the typed `this`
+    cache.set(key, result);
+
+    return result;
+  } as T;
 }
 
-console.log(fib(5, {}))
+// Usage example
+const slowFunction = function (num: number): number {
+  console.log("Computing...");
+  return num * 2;
+};
 
-//without dynamic programming fib function has the O notation of 2^n
-//with dynamic prigramming its now O(n)
+const memoizedFunction = memoize(slowFunction);
+
+console.log(memoizedFunction(5)); // Computing... 10
+console.log(memoizedFunction(5)); // Cached: 10

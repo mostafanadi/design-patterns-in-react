@@ -1,29 +1,14 @@
-const quickSort = (arr: (number | undefined)[]): (number | undefined)[] => {
-  const coppiedArray = [...arr];
-  if (coppiedArray.length <= 1) {
-    return coppiedArray;
-  }
-  const smallArray = [];
-  const bigArray = [];
-  const pivotElement = coppiedArray.shift();
-  const centerArray = [pivotElement];
-  while (coppiedArray.length) {
-    const currentElement = coppiedArray.shift();
-    if (currentElement == pivotElement) {
-      centerArray.push(currentElement);
-    } else if (currentElement! > pivotElement!) {
-      bigArray.push(currentElement);
-    } else {
-      smallArray.push(currentElement);
-    }
-  }
-  const smallerSortedArray = quickSort(smallArray);
-  const biggertSortedArray = quickSort(bigArray);
-  return smallerSortedArray.concat(centerArray, biggertSortedArray);
-};
+function quickSort(arr: number[]): number[] {
+  if (arr.length <= 1) return arr;
 
-const wed = quickSort([85, 65, 415, -95, 87, 1, 255, 6]);
-console.log(wed);
+  const pivot = arr[Math.floor(arr.length / 2)];
+  const left = arr.filter((item) => item < pivot);
+  const right = arr.filter((item) => item > pivot);
+  const middle = arr.filter((item) => item === pivot);
 
-// worst case O(n^2)
-//average O(n * log n)
+  return [...quickSort(left), ...middle, ...quickSort(right)];
+}
+
+// Example usage:
+const sortedArray = quickSort([5, 3, 8, 4, 2]);
+console.log(sortedArray); // Output: [2, 3, 4, 5, 8]
