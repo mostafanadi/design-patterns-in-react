@@ -1,38 +1,33 @@
-const mergeSort = (arr: number[]): number[] => {
-  let copiedArray = [...arr];
-  const middleIndex = Math.floor(copiedArray.length / 2);
-  if (copiedArray.length == 1) {
-    return copiedArray;
-  }
-  if (copiedArray.length == 2) {
-    return copiedArray[0] > copiedArray[1]
-      ? [copiedArray[1], copiedArray[0]]
-      : copiedArray;
+function mergeSort(arr: number[]): number[] {
+  if (arr.length <= 1) {
+    return arr;
   }
 
-  const firstHalf = mergeSort(copiedArray.slice(0, middleIndex));
-  const secondHalf = mergeSort(copiedArray.slice(middleIndex));
-  let firsthalfIndex = 0;
-  let secondHalfIndex = 0;
-  const finalArray: number[] = [];
+  const middle = Math.floor(arr.length / 2);
+  const left: number[] = mergeSort(arr.slice(0, middle));
+  const right: number[] = mergeSort(arr.slice(middle));
 
-  while (
-    firsthalfIndex < firstHalf.length ||
-    secondHalfIndex < secondHalf.length
-  ) {
-    if (
-      firsthalfIndex >= firstHalf.length ||
-      firstHalf[firsthalfIndex] > secondHalf[secondHalfIndex]
-    ) {
-      finalArray.push(secondHalf[secondHalfIndex]);
-      secondHalfIndex++;
+  return merge(left, right);
+}
+
+function merge(left: number[], right: number[]): number[] {
+  let result: number[] = [];
+  let leftIndex = 0;
+  let rightIndex = 0;
+
+  while (leftIndex < left.length && rightIndex < right.length) {
+    if (left[leftIndex] < right[rightIndex]) {
+      result.push(left[leftIndex]);
+      leftIndex++;
     } else {
-      finalArray.push(firstHalf[firsthalfIndex]);
-      firsthalfIndex++;
+      result.push(right[rightIndex]);
+      rightIndex++;
     }
   }
-  return finalArray;
-};
 
-const wdqsd = mergeSort([54, 69, 85, 125, 457, 985, 356, 10, 2]);
-console.log(wdqsd);
+  return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+}
+
+// Example usage:
+const array: number[] = [34, 7, 23, 32, 5, 62];
+console.log(mergeSort(array)); // Output: [5, 7, 23, 32, 34, 62]
