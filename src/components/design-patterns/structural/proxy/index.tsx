@@ -12,7 +12,7 @@ class UserDataProxy {
 
   // Method to fetch user data
   async fetchUserData() {
-    if (!this.userData) {
+    if (!this.userId) {
       // Simulate fetching user data from an API
       const response = await fetch(
         `https://jsonplaceholder.typicode.com/users/${this.userId}`

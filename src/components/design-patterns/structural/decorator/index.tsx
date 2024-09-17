@@ -21,7 +21,10 @@ const withDecorator = <P extends BasicComponentProps>(
   WrappedComponent: React.ComponentType<P>
 ) => {
   // Define props for the enhanced component
-  type EnhancedComponentProps = Omit<P, "message"> & { message: string };
+  type EnhancedComponentProps = Omit<P, "message"> & {
+    message: string;
+    name?: string;
+  };
 
   // Return a new component that wraps the provided component
   const EnhancedComponent: React.FC<EnhancedComponentProps> = (props) => {
