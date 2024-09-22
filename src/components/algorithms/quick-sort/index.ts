@@ -1,7 +1,7 @@
 function quickSort(arr: number[]): number[] {
   if (arr.length <= 1) return arr;
 
-  const pivot = arr[Math.floor(arr.length / 2)];
+  const pivot = arr[arr.length - 1];
   const left = arr.filter((item) => item < pivot);
   const right = arr.filter((item) => item > pivot);
   const middle = arr.filter((item) => item === pivot);
